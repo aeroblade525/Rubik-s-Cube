@@ -1,7 +1,8 @@
+import * as THREE from "three";
 import { CenterPiece } from "./CenterPeice";
 import { CornerPiece } from "./CornerPiece";
 import { EdgePiece } from "./EdgePiece";
-import { Cubical } from "./CubicalBase";
+import { scene } from "./CubeSides";
 
 export let blocks = [];
 //Corner Piece
@@ -36,3 +37,11 @@ for (let i = -1; i < 2; i += 2) {
 for (let i = 0; i < 26; i++) {
   blocks[i].display();
 }
+
+const innercubegeo = new THREE.BoxGeometry(34.5, 34.5, 34.5);
+var innercubemat = new THREE.MeshBasicMaterial({
+  color: 0xffffff,
+});
+const innercube = new THREE.Mesh(innercubegeo, innercubemat);
+scene.add(innercube);
+
