@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { blocks } from "./Cubes and Turns/CubeDisplay.js";
 import { scene } from "./Cubes and Turns/CubeSides.js";
+import { cubeArray } from "./Algorithm/Rotating Cube Array.js";
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -15,6 +16,8 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const orbit = new OrbitControls(camera, renderer.domElement);
+
+console.log(cubeArray);
 
 camera.position.set(30, 30, 30);
 orbit.update();

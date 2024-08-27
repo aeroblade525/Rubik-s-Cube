@@ -3,6 +3,7 @@ import { CenterPiece } from "./CenterPeice";
 import { CornerPiece } from "./CornerPiece";
 import { EdgePiece } from "./EdgePiece";
 import { scene } from "./CubeSides";
+// import { cubeArray } from "../Algorithm/AlgorithmMain";
 
 export let blocks = [];
 //Corner Piece
@@ -45,3 +46,5 @@ var innercubemat = new THREE.MeshBasicMaterial({
 const innercube = new THREE.Mesh(innercubegeo, innercubemat);
 scene.add(innercube);
 
+console.log("0, yellow, 1, purple, 2, white, 3, red, 4, green, 5 orange");
+// console.log(cube)

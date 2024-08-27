@@ -1,5 +1,6 @@
 import { Cubical } from "./CubicalBase";
 import { worldAxisX, worldAxisY, worldAxisZ } from "./Reuseable/WorldAxis";
+import { TPerm } from "../Algorithm/Cube Algotithms/Tperm";
 
 export class EdgePiece extends Cubical {
   constructor(xpos, ypos, zpos) {
@@ -24,26 +25,29 @@ export class EdgePiece extends Cubical {
       if (event.key === "2" && this.xpos >= -6 && this.xpos <= 6)
         this.rotateCubeMCW = true;
       if (event.key === "3" && this.xpos >= 6) this.rotateCubeRCW = true;
-      if (event.key === "5" && this.ypos >= -6 && this.ypos <= 6)
-        this.rotateCubeECW = true;
       if (event.key === "4" && this.zpos >= 6) this.rotateCubeFCW = true;
+      if (event.key === "5" && this.zpos >= -6 && this.zpos <= 6)
+        this.rotateCubeSCW = true;
       if (event.key === "6" && this.zpos <= -6) this.rotateCubeBCW = true;
       if (event.key === "7" && this.ypos >= 6) this.rotateCubeUCW = true;
-      if (event.key === "8" && this.zpos >= -6 && this.zpos <= 6)
-        this.rotateCubeSCW = true;
+      if (event.key === "8" && this.ypos >= -6 && this.ypos <= 6)
+        this.rotateCubeECW = true;
       if (event.key === "9" && this.ypos <= -6) this.rotateCubeDCW = true;
       if (event.key === "q" && this.xpos <= -6) this.rotateCubeLCCW = true;
       if (event.key === "w" && this.xpos >= -6 && this.xpos <= 6)
         this.rotateCubeMCCW = true;
       if (event.key === "e" && this.xpos >= 6) this.rotateCubeRCCW = true;
       if (event.key === "r" && this.zpos >= 6) this.rotateCubeFCCW = true;
-      if (event.key === "t" && this.ypos >= -6 && this.ypos <= 6)
-        this.rotateCubeECCW = true;
+      if (event.key === "t" && this.zpos >= -6 && this.zpos <= 6)
+        this.rotateCubeSCCW = true;
       if (event.key === "y" && this.zpos <= -6) this.rotateCubeBCCW = true;
       if (event.key === "u" && this.ypos >= 6) this.rotateCubeUCCW = true;
-      if (event.key === "i" && this.zpos >= -6 && this.zpos <= 6)
-        this.rotateCubeSCCW = true;
+      if (event.key === "i" && this.ypos >= -6 && this.ypos <= 6)
+        this.rotateCubeECCW = true;
       if (event.key === "o" && this.ypos <= -6) this.rotateCubeDCCW = true;
+      if (event.key === "g") {
+        TPerm(this);
+      }
     });
 
     if (this.rotateCubeLCW) {
@@ -53,7 +57,10 @@ export class EdgePiece extends Cubical {
     }
     if (this.rotateCubeRCW) {
       this.lineGroup.rotateOnWorldAxis(worldAxisX, -Math.PI / 2);
+      // console.log(this.rotateCubeRCW)
       this.rotateCubeRCW = false;
+      // keypresses.push("3")
+      // console.log(keypresses)
       this.updatePosition();
     }
     if (this.rotateCubeFCW) {
@@ -69,6 +76,8 @@ export class EdgePiece extends Cubical {
     if (this.rotateCubeUCW) {
       this.lineGroup.rotateOnWorldAxis(worldAxisY, -Math.PI / 2);
       this.rotateCubeUCW = false;
+      // keypresses.push("7")
+      // console.log(keypresses)
       this.updatePosition();
     }
     if (this.rotateCubeDCW) {
@@ -82,12 +91,12 @@ export class EdgePiece extends Cubical {
       this.updatePosition();
     }
     if (this.rotateCubeECW) {
-      this.lineGroup.rotateOnWorldAxis(worldAxisY, -Math.PI / 2);
+      this.lineGroup.rotateOnWorldAxis(worldAxisY, Math.PI / 2);
       this.rotateCubeECW = false;
       this.updatePosition();
     }
     if (this.rotateCubeSCW) {
-      this.lineGroup.rotateOnWorldAxis(worldAxisZ, Math.PI / 2);
+      this.lineGroup.rotateOnWorldAxis(worldAxisZ, -Math.PI / 2);
       this.rotateCubeSCW = false;
       this.updatePosition();
     }
@@ -100,6 +109,8 @@ export class EdgePiece extends Cubical {
     if (this.rotateCubeRCCW) {
       this.lineGroup.rotateOnWorldAxis(worldAxisX, Math.PI / 2);
       this.rotateCubeRCCW = false;
+      // keypresses.push("e")
+      // console.log(keypresses)
       this.updatePosition();
     }
     if (this.rotateCubeFCCW) {
@@ -115,6 +126,8 @@ export class EdgePiece extends Cubical {
     if (this.rotateCubeUCCW) {
       this.lineGroup.rotateOnWorldAxis(worldAxisY, Math.PI / 2);
       this.rotateCubeUCCW = false;
+      // keypresses.push("u")
+      // console.log(keypresses)
       this.updatePosition();
     }
     if (this.rotateCubeDCCW) {
@@ -128,12 +141,12 @@ export class EdgePiece extends Cubical {
       this.updatePosition();
     }
     if (this.rotateCubeECCW) {
-      this.lineGroup.rotateOnWorldAxis(worldAxisY, Math.PI / 2);
+      this.lineGroup.rotateOnWorldAxis(worldAxisY, -Math.PI / 2);
       this.rotateCubeECCW = false;
       this.updatePosition();
     }
     if (this.rotateCubeSCCW) {
-      this.lineGroup.rotateOnWorldAxis(worldAxisZ, -Math.PI / 2);
+      this.lineGroup.rotateOnWorldAxis(worldAxisZ, Math.PI / 2);
       this.rotateCubeSCCW = false;
       this.updatePosition();
     }

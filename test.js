@@ -1,96 +1,95 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+function CubeArrayBCW(cube) {
+  console.log("this function is working");
 
+  let newCube = [
+    [[], [], []],
+    [[], [], []],
+    [[], [], []],
+    [[], [], []],
+    [[], [], []],
+    [[], [], []],
+  ];
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+  newCube[0] = [
+    [cube[0][0][0], cube[0][0][1], cube[3][0][2]],
+    [cube[0][1][0], cube[0][1][1], cube[3][1][2]],
+    [cube[0][2][0], cube[0][2][1], cube[3][2][2]],
+  ];
 
-const camera = new THREE.PerspectiveCamera(
-  45,
-  window.innerWidth / window.innerHeight,
-  1,
-  500
-);
-camera.position.set(30, 30, 30);
-camera.lookAt(0, 0, 0);
+  newCube[1] = cube[1];
 
-const scene = new THREE.Scene();
+  newCube[2] = [
+    [cube[2][0][0], cube[2][0][1], cube[5][2][0]],
+    [cube[2][1][0], cube[2][1][1], cube[5][1][0]],
+    [cube[2][2][0], cube[2][2][1], cube[5][0][0]],
+  ];
 
-const orbit = new OrbitControls(camera, renderer.domElement);
+  newCube[3] = [
+    [cube[3][0][0], cube[3][0][1], cube[2][0][2]],
+    [cube[3][1][0], cube[3][1][1], cube[2][1][2]],
+    [cube[3][2][0], cube[3][2][1], cube[2][2][2]],
+  ];
 
-const axisHelper = new THREE.AxesHelper(20);
-scene.add(axisHelper);
+  newCube[4] = [
+    [cube[4][2][0], cube[4][1][0], cube[4][0][0]],
+    [cube[4][2][1], cube[4][1][1], cube[4][0][1]],
+    [cube[4][2][2], cube[4][1][2], cube[4][0][2]],
+  ];
 
-camera.position.set(30, 30, 30);
-orbit.update();
+  newCube[5] = [
+    [cube[0][2][2], cube[5][0][1], cube[5][0][2]],
+    [cube[0][1][2], cube[5][1][1], cube[5][1][2]],
+    [cube[0][0][2], cube[5][2][1], cube[5][2][2]],
+  ];
 
-const planeGeomerty = new THREE.PlaneGeometry(36, 36);
-const planeMaterial = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
-  side: THREE.DoubleSide,
+  return newCube;
+}
+// Example usage:
+let cubeArray = [
+  [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ],
+  [
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+  ],
+  [
+    [2, 2, 2],
+    [2, 2, 2],
+    [2, 2, 2],
+  ],
+  [
+    [3, 3, 3],
+    [3, 3, 3],
+    [3, 3, 3],
+  ],
+  [
+    [4, 4, 4],
+    [4, 4, 4],
+    [4, 4, 4],
+  ],
+  [
+    [5, 5, 5],
+    [5, 5, 5],
+    [5, 5, 5],
+  ],
+];
+
+// console.log(cubeArray[1][0][0])
+let trotateCubeRCW = false;
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "2") {
+    cubeArray = CubeArrayBCW(cubeArray);
+    console.log(cubeArray);
+    trotateCubeRCW = false;
+  }
+  console.log(event);
+  console.log(trotateCubeRCW);
 });
-const plane = new THREE.Mesh(planeGeomerty, planeMaterial);
-scene.add(plane);
-plane.rotation.x = -0.5 * Math.PI;
 
-const gridHelper = new THREE.GridHelper(36, 12);
-scene.add(gridHelper);
-
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-cube.position.set(10, 10, 10);
-scene.add(cube);
-
-// Define rotation increment (in radians)
-const rotationIncrement = Math.PI / 4; // 15 degrees
-
-// Function to rotate around world axis
-function rotateAroundWorldAxis(object, axis, radians) {
-    const rotationMatrix = new THREE.Matrix4();
-    rotationMatrix.makeRotationAxis(axis.normalize(), radians);
-
-    // Apply the rotation matrix to the cube's position
-    const position = object.position.clone().applyMatrix4(rotationMatrix);
-    object.position.copy(position);
-
-    // Update the object's rotation
-    object.rotation.setFromRotationMatrix(rotationMatrix);
+if (trotateCubeRCW == true) {
 }
-
-// Define world axes
-const worldAxisX = new THREE.Vector3(1, 0, 0);
-const worldAxisY = new THREE.Vector3(0, 1, 0);
-const worldAxisZ = new THREE.Vector3(0, 0, 1);
-
-// Function to handle keydown events
-function onKeyDown(event) {
-    switch (event.key) {
-        case '1':
-            rotateAroundWorldAxis(cube, worldAxisX, rotationIncrement);
-            break;
-        case '2':
-            rotateAroundWorldAxis(cube, worldAxisY, rotationIncrement);
-            break;
-        case '3':
-            rotateAroundWorldAxis(cube, worldAxisZ, rotationIncrement);
-            break;
-    }
-}
-
-// Add event listener for keydown events
-window.addEventListener('keydown', onKeyDown);
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  // Continuously rotate around the world axes
-  // rotateAroundWorldAxis(cube, worldAxisX, Math.PI / 2000);
-  // rotateAroundWorldAxis(cube, worldAxisY, 0.01);
-  // rotateAroundWorldAxis(cube, worldAxisZ, 0.01);
-
-  renderer.render(scene, camera);
-}
-
-renderer.setAnimationLoop(animate);
