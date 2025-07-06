@@ -1,3 +1,6 @@
+import { SexyMoveAlgorithm } from "./Cube Algotithms/Common Moves/SexyMove";
+import { TpermAlgorithm } from "./Cube Algotithms/Tperm";
+import { YpermAlgorithm } from "./Cube Algotithms/Yperm";
 import {
   CubeArrayBCCW,
   CubeArrayDCCW,
@@ -21,7 +24,7 @@ import {
   CubeArrayDCW,
 } from "./CubeTurningCW";
 
-export var cubeArray = [
+export let cubeArray = [
   [
     [0, 0, 0],
     [0, 0, 0],
@@ -125,6 +128,10 @@ window.addEventListener("keydown", (event) => {
   }
   if (event.key === "o") {
     cubeArray = CubeArrayDCCW(cubeArray);
+    console.log(cubeArray);
+  }
+  if (event.key === "p") {
+    cubeArray = YpermAlgorithm(cubeArray);
     console.log(cubeArray);
   }
 });

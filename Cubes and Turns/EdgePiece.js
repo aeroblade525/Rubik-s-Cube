@@ -1,6 +1,6 @@
 import { Cubical } from "./CubicalBase";
 import { worldAxisX, worldAxisY, worldAxisZ } from "./Reuseable/WorldAxis";
-import { TPerm } from "../Algorithm/Cube Algotithms/Tperm";
+// import { TPerm } from "../Algorithm/Cube Algotithms/Tperm";
 
 export class EdgePiece extends Cubical {
   constructor(xpos, ypos, zpos) {
@@ -45,9 +45,9 @@ export class EdgePiece extends Cubical {
       if (event.key === "i" && this.ypos >= -6 && this.ypos <= 6)
         this.rotateCubeECCW = true;
       if (event.key === "o" && this.ypos <= -6) this.rotateCubeDCCW = true;
-      if (event.key === "g") {
-        TPerm(this);
-      }
+      // if (event.key === "g") {
+      //   TPerm(this);
+      // }
     });
 
     if (this.rotateCubeLCW) {
