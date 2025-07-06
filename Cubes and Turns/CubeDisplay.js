@@ -41,10 +41,9 @@ for (let i = 0; i < 26; i++) {
 
 const innercubegeo = new THREE.BoxGeometry(34.5, 34.5, 34.5);
 var innercubemat = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
+  color: 0x000000,
 });
 const innercube = new THREE.Mesh(innercubegeo, innercubemat);
 scene.add(innercube);
 
 console.log("0, yellow, 1, purple, 2, white, 3, red, 4, green, 5 orange");
-// console.log(cube)
