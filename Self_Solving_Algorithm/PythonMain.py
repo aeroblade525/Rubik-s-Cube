@@ -1,4 +1,6 @@
-from Self_Solving_Algorithm.Cube_Algorithms.Tperm import TpermAlgorithm
+from Self_Solving_Algorithm.Path_Find_Algorithm.Path_Find_Main import edge_solve_algorithm
+# from Self_Solving_Algorithm.Cube_Algorithms.Tperm import TpermAlgorithm
+
 cubeArrayPython = [
   [
     [0, 0, 0],
@@ -32,6 +34,6 @@ cubeArrayPython = [
   ],
 ]
 
-print(TpermAlgorithm(cubeArrayPython))
+print(edge_solve_algorithm(cubeArrayPython))
 
 # python -m Self_Solving_Algorithm.PythonMain

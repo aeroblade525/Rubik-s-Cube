@@ -5,29 +5,29 @@ from collections import deque
 # the 'AE' node is the endpoint for all nodes
 cube_path = {
     'AE': [], #Yellow Face
-    'BE': ['AE', 'CE', 'FE', 'TE', 'UE', 'OE'], #Yellow Face
-    'CE': ['BE', 'DE', 'VE', 'PE', 'GE', 'QE'], #Yellow Face
-    'DE': ['AE', 'CE', 'WE', 'ME', 'HE', 'RE'], #Yellow Face
-    'EE': ['FE', 'HE', 'AE', 'IE', 'ME', 'UE'], #Red Face
-    'FE': ['EE', 'GE', 'BE', 'JE', 'NE', 'VE'], #Red Face
-    'GE': ['FE', 'HE', 'OE', 'WE', 'CE', 'KE'], #Red Face
-    'HE': ['EE', 'GE', 'PE', 'XE', 'DE', 'LE'], #Red Face
-    'IE': ['JE', 'LE', 'EE', 'SE', 'VE', 'PE'], #White Face
-    'JE': ['IE', 'KE', 'WE', 'ME', 'FE', 'TE'], #White Face
-    'KE': ['JE', 'LE', 'GE', 'QE', 'NE', 'XE'], #White Face
-    'LE': ['IE', 'KE', 'HE', 'RE', 'OE', 'UE'], #White Face
-    'ME': ['NE', 'PE', 'DE', 'JE', 'EE', 'QE'], #Green Face
-    'NE': ['ME', 'OE', 'FE', 'RE', 'AE', 'KE'], #Green Face
-    'OE': ['NE', 'PE', 'BE', 'LE', 'GE', 'SE'], #Green Face
-    'PE': ['OE', 'ME', 'HE', 'TE', 'CE', 'IE'], #Green Face
-    'QE': ['RE', 'TE', 'CE', 'KE', 'ME', 'UE'], #Orange Face
-    'RE': ['QE', 'SE', 'NE', 'VE', 'DE', 'LE'], #Orange Face
-    'SE': ['RE', 'TE', 'AE', 'IE', 'OE', 'WE'], #Orange Face
-    'TE': ['QE', 'SE', 'PE', 'XE', 'BE', 'JE'], #Orange Face
-    'UE': ['VE', 'XE', 'BE', 'LE', 'QE', 'EE'], #Blue/Purple Face
-    'VE': ['UE', 'WE', 'FE', 'RE', 'CE', 'IE'], #Blue/Purple Face
-    'WE': ['VE', 'XE', 'DE', 'JE', 'GE', 'SE'], #Blue/Purple Face
-    'XE': ['UE', 'WE', 'HE', 'TE', 'AE', 'KE']  #Blue/Purple Face
+    'BE': ['AE', 'CE', 'UE', 'OE'], #Yellow Face
+    'CE': ['BE', 'DE', 'GE', 'QE'], #Yellow Face
+    'DE': ['AE', 'CE', 'WE', 'ME'], #Yellow Face
+    'EE': ['FE', 'HE', 'AE', 'IE'], #Red Face
+    'FE': ['EE', 'GE', 'NE', 'VE'], #Red Face
+    'GE': ['FE', 'HE', 'CE', 'KE'], #Red Face
+    'HE': ['EE', 'GE', 'PE', 'XE'], #Red Face
+    'IE': ['JE', 'LE', 'EE', 'SE'], #White Face
+    'JE': ['IE', 'KE', 'WE', 'ME'], #White Face
+    'KE': ['JE', 'LE', 'GE', 'QE'], #White Face
+    'LE': ['IE', 'KE', 'OE', 'UE'], #White Face
+    'ME': ['NE', 'PE', 'DE', 'JE'], #Green Face
+    'NE': ['ME', 'OE', 'FE', 'RE'], #Green Face
+    'OE': ['NE', 'PE', 'BE', 'LE'], #Green Face
+    'PE': ['OE', 'ME', 'HE', 'TE'], #Green Face
+    'QE': ['RE', 'TE', 'CE', 'KE'], #Orange Face
+    'RE': ['QE', 'SE', 'NE', 'VE'], #Orange Face
+    'SE': ['RE', 'TE', 'AE', 'IE'], #Orange Face
+    'TE': ['QE', 'SE', 'PE', 'XE'], #Orange Face
+    'UE': ['VE', 'XE', 'BE', 'LE'], #Blue/Purple Face
+    'VE': ['UE', 'WE', 'FE', 'RE'], #Blue/Purple Face
+    'WE': ['VE', 'XE', 'DE', 'JE'], #Blue/Purple Face
+    'XE': ['UE', 'WE', 'HE', 'TE']  #Blue/Purple Face
 }
 
 def edge_shortest_path(graph, start, goal):
@@ -50,5 +50,16 @@ def edge_shortest_path(graph, start, goal):
 
     return None 
 
-path = edge_shortest_path(cube_path, 'UE', 'AE')
-print("Shortest path from 'b' to 'a':", path)
+def moves_corresponder_bfs_edge(path, move_map):
+    edge_turns = []
+    for i in range(len(path) - 1):
+        edge = (path[i], path[i + 1])
+        reverse_edge = (path[i + 1], path[i])
+        
+        if edge in move_map:
+            edge_turns.append(move_map[edge])
+        elif reverse_edge in move_map:
+            edge_turns.append(move_map[reverse_edge])
+        else:
+            edge_turns.append(f"Unknown move for {edge}")
+    return edge_turns
