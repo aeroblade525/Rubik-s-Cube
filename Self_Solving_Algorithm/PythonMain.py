@@ -1,39 +1,7 @@
-from Self_Solving_Algorithm.Path_Find_Algorithm.Path_Find_Main import edge_solve_algorithm
-# from Self_Solving_Algorithm.Cube_Algorithms.Tperm import TpermAlgorithm
+from Self_Solving_Algorithm.Path_Find_Algorithm.Path_Find_Main import solve_algorithm
+from Self_Solving_Algorithm.PythonCubeArray import cube_array_python
 
-cubeArrayPython = [
-  [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-  ],
-  [
-    [1, 1, 1],
-    [1, 1, 1],
-    [1, 1, 1],
-  ],
-  [
-    [2, 2, 2],
-    [2, 2, 2],
-    [2, 2, 2],
-  ],
-  [
-    [3, 3, 3],
-    [3, 3, 3],
-    [3, 3, 3],
-  ],
-  [
-    [4, 4, 4],
-    [4, 4, 4],
-    [4, 4, 4],
-  ],
-  [
-    [5, 5, 5],
-    [5, 5, 5],
-    [5, 5, 5],
-  ],
-]
-
-print(edge_solve_algorithm(cubeArrayPython))
+print("this is the start", solve_algorithm(cube_array_python)[0])
+print("this is the change", solve_algorithm(cube_array_python)[-1])
 
 # python -m Self_Solving_Algorithm.PythonMain

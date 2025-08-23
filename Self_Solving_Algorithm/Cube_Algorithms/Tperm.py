@@ -4,7 +4,7 @@ from ..Cube_Algorithms.Common_Moves.Sexy_Move import SexyMoveAlgorithm
 from ..Cube_Algorithms.Common_Moves.Sledge_Hammer import SledgeHammerAlgorithm
 import copy
 
-TpermNotation = [
+Tperm_notation = [
     SexyMoveAlgorithm,
     CubeArrayRCCW,
     CubeArrayFCW,
@@ -16,8 +16,8 @@ TpermNotation = [
     SledgeHammerAlgorithm
 ]
 
-def TpermAlgorithm(cube):
+def Tperm_algorithm(cube):
     current_state = copy.deepcopy(cube)
-    for move in TpermNotation:
+    for move in Tperm_notation:
         current_state = move(current_state)
     return current_state
