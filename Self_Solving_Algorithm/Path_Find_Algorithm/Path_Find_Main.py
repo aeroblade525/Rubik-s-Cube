@@ -15,3 +15,9 @@ def solve_algorithm(cube):
             current_state = move_func(current_state)
         states.append(current_state)
     return states
+
+from .Edge_Pathfind.EdgeBFS import find_edge_path
+from .Edge_Pathfind.EdgePath import coordinate_to_label
+from .Edge_Pathfind.EdgePath import edge_cube_path
+
+print(find_edge_path(cube_array_python, (0, 0, 1), (0, 1, 0), coordinate_to_label, edge_cube_path))
