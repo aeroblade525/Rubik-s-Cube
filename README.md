@@ -13,4 +13,4 @@ Controls
 8: E    i: E'
 9: D    o: D'
 
-Uses Node.js and Build Tool Vite
+Uses Build Tool Vite
