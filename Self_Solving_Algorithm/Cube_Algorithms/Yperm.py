@@ -1,7 +1,7 @@
-from ..Cube_Turning.Cube_Turning_CCW import CubeArrayFCCW, CubeArrayRCCW, CubeArrayUCCW
-from ..Cube_Turning.Cube_Turning_CW import CubeArrayFCW, CubeArrayRCW
-from ..Cube_Algorithms.Common_Moves.Sexy_Move import sexy_move_algorithm
-from ..Cube_Algorithms.Common_Moves.Sledge_Hammer import sledge_hammer_algorithm
+from Cube_Turning.Cube_Turning_CCW import CubeArrayFCCW, CubeArrayRCCW, CubeArrayUCCW
+from Cube_Turning.Cube_Turning_CW import CubeArrayFCW, CubeArrayRCW
+from Cube_Algorithms.Common_Moves.Sexy_Move import sexy_move_algorithm
+from Cube_Algorithms.Common_Moves.Sledge_Hammer import sledge_hammer_algorithm
 import copy
 
 Yperm_notation = [

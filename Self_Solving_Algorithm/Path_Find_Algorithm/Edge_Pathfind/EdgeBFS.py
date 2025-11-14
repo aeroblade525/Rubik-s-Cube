@@ -1,4 +1,4 @@
-from ..Resuable.BFSAlgorithm import shortest_path
+from Path_Find_Algorithm.Resuable.BFSAlgorithm import shortest_path
 
 def find_edge_path(cube_array, coord1, coord2, coord_to_label, edge_graph):
     label1 = coord_to_label.get(coord1)

@@ -1,5 +1,5 @@
-from ...Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW
-from ...Cube_Turning.Cube_Turning_CCW import CubeArrayFCCW, CubeArrayRCCW
+from Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW
+from Cube_Turning.Cube_Turning_CCW import CubeArrayFCCW, CubeArrayRCCW
 import copy
 
 sledge_hammer_notation = [

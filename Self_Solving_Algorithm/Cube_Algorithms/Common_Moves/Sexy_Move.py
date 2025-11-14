@@ -1,5 +1,5 @@
-from ...Cube_Turning.Cube_Turning_CCW import CubeArrayRCCW, CubeArrayUCCW
-from ...Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW
+from Cube_Turning.Cube_Turning_CCW import CubeArrayRCCW, CubeArrayUCCW
+from Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW
 import copy
 
 sexy_move_notation = [

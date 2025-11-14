@@ -1,88 +1,9 @@
-cube_array_python = [
-  [
-    [0, 0, 0],
-    [0, 0, 1],
-    [0, 0, 0],
-  ],
-  [
-    [1, 1, 1],
-    [1, 1, 1],
-    [1, 1, 1],
-  ],
-  [
-    [2, 2, 2],
-    [2, 2, 2],
-    [2, 2, 2],
-  ],
-  [
-    [3, 3, 3],
-    [3, 3, 3],
-    [3, 3, 3],
-  ],
-  [
-    [4, 2, 4],
-    [4, 4, 4],
-    [4, 4, 4],
-  ],
-  [
-    [5, 5, 5],
-    [5, 5, 5],
-    [5, 5, 5],
-  ],
-]
-
-
-def home_position_edge(edge_position, cube_array):
-    edge_adjacents = {
-        (0, 1, 0): (1, 0, 1),
-        (0, 0, 1): (5, 0, 1),
-        (0, 1, 2): (4, 0, 1),
-        (0, 2, 1): (3, 0, 1),
-        (1, 1, 0): (5, 1, 2),
-        (1, 0, 1): (0, 1, 0),
-        (1, 1, 2): (4, 1, 0),
-        (1, 2, 1): (2, 1, 0),
-        (2, 1, 0): (1, 2, 1),
-        (2, 0, 1): (5, 2, 1),
-        (2, 1, 2): (4, 2, 1),
-        (2, 2, 1): (3, 2, 1),
-        (3, 1, 0): (5, 1, 0),
-        (3, 0, 1): (0, 2, 1),
-        (3, 1, 2): (4, 1, 2),
-        (3, 2, 1): (2, 2, 1),
-        (4, 1, 0): (1, 1, 2),
-        (4, 0, 1): (0, 1, 2),
-        (4, 1, 2): (3, 1, 2),
-        (4, 2, 1): (2, 1, 2),
-        (5, 1, 0): (3, 1, 0),
-        (5, 0, 1): (0, 0, 1),
-        (5, 1, 2): (1, 1, 0),
-        (5, 2, 1): (2, 0, 1),
-    }
-
-    if edge_position not in edge_adjacents:
-        return f"Edge position {edge_position} not recognized."
-
-    face1, row1, col1 = edge_position
-    face2, row2, col2 = edge_adjacents[edge_position]
-
-    color1 = cube_array[face1][row1][col1]
-    color2 = cube_array[face2][row2][col2]
-
-    for pos, adj in edge_adjacents.items():
-        f1, r1, c1 = pos
-        f2, r2, c2 = adj
-        center1 = cube_array[f1][1][1]
-        center2 = cube_array[f2][1][1]
-
-        if set([color1, color2]) == set([center1, center2]):
-            if center1 == color1:
-                return pos
-            elif center2 == color1:
-                return adj
-    return "Home position not found."
-
-print(home_position_edge((0, 1, 2), cube_array_python))
+from Path_Find_Algorithm.Resuable.PieceFinder import home_position_edge
+from Path_Find_Algorithm.Resuable.BFSAlgorithm import shortest_path, moves_corresponder_bfs
+from Path_Find_Algorithm.Edge_Pathfind.EdgeBFSMoveCorresponder import edge_map
+from PythonCubeArray import cube_array_python
+from Path_Find_Algorithm.Edge_Pathfind.EdgePath import edge_cube_path, coordinate_to_label
+from Cube_Algorithms.Tperm import Tperm_algorithm
 
 def is_edge_solved(face):
     center = face[1][1]
@@ -93,9 +14,68 @@ def is_edge_solved(face):
         face[1][2] == center      
     )
 
-i = 0
-while not all(is_edge_solved(face) for face in cube_array_python):
-    print("Still solving...")
-    i += 1
-    if i > 10:
-        break
+# def edge_solver(cube):
+#     i = 0
+#     while not all(is_edge_solved(face) for face in cube):
+#       i += 1
+#       if i > 4:
+#         break
+#       else:
+#         return shortest_path(edge_cube_path, coordinate_to_label[(0, 1, 2)], home_position_edge((0, 1, 2), cube))
+
+def edge_solver(cube, start_pos):
+    original_pos = start_pos
+    current_pos = start_pos
+    edge_cube_path = []
+    paths = []
+    i = 0
+    while True:
+        start_label = coordinate_to_label.get(current_pos)
+        goal_coord = home_position_edge(current_pos, cube)
+        goal_label = coordinate_to_label.get(goal_coord)
+
+        print(f"Solving edge at {current_pos}: {start_label} → {goal_label}")
+
+        if start_label is None or goal_label is None:
+            print(f"Invalid label for {current_pos} or {goal_coord}")
+            break
+
+        path = shortest_path(edge_cube_path, start_label, goal_label)
+        print(f"Path: {path}")
+        edge_cube_path.append(path)
+        paths.append(moves_corresponder_bfs(path, edge_map))
+        paths.append(Tperm_algorithm)
+        path_back = shortest_path(edge_cube_path, goal_label, start_label)
+        edge_cube_path.append(path_back)
+        paths.append(moves_corresponder_bfs(path_back, edge_map))
+
+        # Stop if the edge is already at its home
+        if current_pos == goal_coord:
+            print("Edge is in its home position.")
+            break
+
+        # Move to the next edge position (simulate the move)
+        current_pos = goal_coord
+
+        if current_pos == original_pos:
+            break
+
+    return paths, edge_cube_path
+
+# def edge_solver(cube):
+#     for i in range(4):
+#         path = shortest_path(
+#             edge_cube_path,
+#             'CE',
+#             'XE'
+#         )
+#         print(f"Iteration {i + 1}: {path}")
+#     return "Done"
+# def edge_solver(cube):
+#     i = 0
+#     while not all(is_edge_solved(face) for face in cube):
+#       if i > 4:
+#         break
+
+# print(edge_solver(cube_array_python))
+    

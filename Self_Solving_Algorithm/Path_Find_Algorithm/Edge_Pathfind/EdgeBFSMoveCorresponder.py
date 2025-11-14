@@ -1,5 +1,5 @@
-from ...Cube_Turning.Cube_Turning_CCW import CubeArrayBCCW, CubeArrayDCCW, CubeArrayFCCW, CubeArrayLCCW, CubeArrayRCCW, CubeArrayUCCW
-from ...Cube_Turning.Cube_Turning_CW import CubeArrayBCW, CubeArrayDCW, CubeArrayFCW, CubeArrayLCW, CubeArrayRCW, CubeArrayUCW
+from Cube_Turning.Cube_Turning_CCW import CubeArrayBCCW, CubeArrayDCCW, CubeArrayFCCW, CubeArrayLCCW, CubeArrayRCCW, CubeArrayUCCW
+from Cube_Turning.Cube_Turning_CW import CubeArrayBCW, CubeArrayDCW, CubeArrayFCW, CubeArrayLCW, CubeArrayRCW, CubeArrayUCW
 
 edge_map = {
     ('BE', 'AE'): CubeArrayUCCW,

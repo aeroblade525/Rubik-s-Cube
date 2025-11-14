@@ -1,5 +1,5 @@
-from ...Cube_Turning.Cube_Turning_CCW import CubeArrayMCCW, CubeArrayECCW, CubeArraySCCW
-from ...Cube_Turning.Cube_Turning_CW import CubeArrayMCW, CubeArrayECW, CubeArraySCW
+from Cube_Turning.Cube_Turning_CCW import CubeArrayMCCW, CubeArrayECCW, CubeArraySCCW
+from Cube_Turning.Cube_Turning_CW import CubeArrayMCW, CubeArrayECW, CubeArraySCW
 
 center_map = {
     (0, 1): CubeArrayMCW,

@@ -1,8 +1,8 @@
 import copy
-from ..Resuable.BFSAlgorithm import moves_corresponder_bfs, shortest_path
-from ..Resuable.PieceFinder import center_find_peice
-from ..Centers_Pathfind.CentersBFS import centers_cube_path
-from ..Centers_Pathfind.CentersBFSMoveCorresponder import center_map
+from Path_Find_Algorithm.Resuable.BFSAlgorithm import moves_corresponder_bfs, shortest_path
+from Path_Find_Algorithm.Resuable.PieceFinder import center_find_peice
+from Path_Find_Algorithm.Centers_Pathfind.CentersBFS import centers_cube_path
+from Path_Find_Algorithm.Centers_Pathfind.CentersBFSMoveCorresponder import center_map
 
 def center_solver(cube):
     CurrentState = copy.deepcopy(cube)

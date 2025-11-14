@@ -1,6 +1,8 @@
 import copy
-from ..PythonCubeArray import cube_array_python
-from .Pochmann_Method.Centers import center_solver
+from PythonCubeArray import cube_array_python
+from Path_Find_Algorithm.Pochmann_Method.Centers import center_solver
+from Path_Find_Algorithm.Pochmann_Method.Edges import edge_solver
+from Path_Find_Algorithm.Resuable.PieceFinder import home_position_edge
 
 cube_sequence = []
 cube_sequence.append(center_solver(cube_array_python))
@@ -16,8 +18,4 @@ def solve_algorithm(cube):
         states.append(current_state)
     return states
 
-from .Edge_Pathfind.EdgeBFS import find_edge_path
-from .Edge_Pathfind.EdgePath import coordinate_to_label
-from .Edge_Pathfind.EdgePath import edge_cube_path
-
-print(find_edge_path(cube_array_python, (0, 0, 1), (0, 1, 0), coordinate_to_label, edge_cube_path))
+# print(edge_solver(cube_array_python, (0, 1, 2)))

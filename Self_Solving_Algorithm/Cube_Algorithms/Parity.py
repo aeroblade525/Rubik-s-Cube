@@ -1,7 +1,7 @@
 import copy
-from .Common_Moves.Sledge_Hammer import sledge_hammer_algorithm
-from ..Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW, CubeArrayFCW
-from ..Cube_Turning.Cube_Turning_CCW import CubeArrayRCCW, CubeArrayUCCW
+from Cube_Algorithms.Common_Moves.Sledge_Hammer import sledge_hammer_algorithm
+from Cube_Turning.Cube_Turning_CW import CubeArrayRCW, CubeArrayUCW, CubeArrayFCW
+from Cube_Turning.Cube_Turning_CCW import CubeArrayRCCW, CubeArrayUCCW
 
 parity_notation = [
     sledge_hammer_algorithm,
