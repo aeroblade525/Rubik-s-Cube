@@ -1,4 +1,4 @@
-def CubeArrayRCW(cube):
+def CubeArrayFCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [
@@ -37,7 +37,7 @@ def CubeArrayRCW(cube):
     
 
 
-def CubeArrayLCW(cube):
+def CubeArrayBCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [
@@ -75,7 +75,7 @@ def CubeArrayLCW(cube):
     return newCube
 
 
-def CubeArrayMCW(cube):
+def CubeArraySCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [
@@ -109,7 +109,7 @@ def CubeArrayMCW(cube):
     return newCube
 
 
-def CubeArrayFCW(cube):
+def CubeArrayLCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [
@@ -147,7 +147,7 @@ def CubeArrayFCW(cube):
     return newCube
 
 
-def CubeArrayBCW(cube):
+def CubeArrayRCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [
@@ -185,7 +185,7 @@ def CubeArrayBCW(cube):
     return newCube
 
 
-def CubeArraySCW(cube):
+def CubeArrayMCW(cube):
     newCube = [[[], [], []] for _ in range(6)]
 
     newCube[0] = [

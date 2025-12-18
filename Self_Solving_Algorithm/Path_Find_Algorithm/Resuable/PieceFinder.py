@@ -1,10 +1,4 @@
-def center_find_peice(color, cube):
-    for i in range(len(cube)):
-        if cube[i][1][1] == color:
-            return i
-
-def home_position_edge(edge_position, cube_array):
-    edge_adjacents = {
+edge_adjacents = {
         (0, 1, 0): (1, 0, 1),
         (0, 0, 1): (5, 0, 1),
         (0, 1, 2): (4, 0, 1),
@@ -21,7 +15,7 @@ def home_position_edge(edge_position, cube_array):
         (3, 0, 1): (0, 2, 1),
         (3, 1, 2): (4, 1, 0),
         (3, 2, 1): (2, 0, 1),
-        (4, 1, 0): (3, 1, 0),
+        (4, 1, 0): (3, 1, 2),
         (4, 0, 1): (0, 1, 2),
         (4, 1, 2): (5, 1, 0),
         (4, 2, 1): (2, 1, 2),
@@ -30,6 +24,13 @@ def home_position_edge(edge_position, cube_array):
         (5, 1, 2): (1, 1, 0),
         (5, 2, 1): (2, 2, 1),
     }
+
+def center_find_peice(color, cube):
+    for i in range(len(cube)):
+        if cube[i][1][1] == color:
+            return i
+
+def home_position_edge(edge_position, cube_array):
 
     if edge_position not in edge_adjacents:
         return f"Edge position {edge_position} not recognized."

@@ -13,7 +13,6 @@ def shortest_path(graph, start, goal):
 
         if node not in visited:
             visited.add(node)
-            print(graph)
             for neighbor in graph.get(node, []):
                 new_path = list(path) 
                 new_path.append(neighbor)

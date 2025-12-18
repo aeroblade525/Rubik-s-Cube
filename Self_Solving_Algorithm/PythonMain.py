@@ -1,13 +1,14 @@
 from Path_Find_Algorithm.Path_Find_Main import solve_algorithm
+# from Path_Find_Algorithm.Pochmann_Method.Edges import edge_solver
 from PythonCubeArray import cube_array_python
 
 
 
 def main():
-    print(cube_array_python, "cube")
+    # print(edge_solver(cube_array_python, (0, 1, 2)))
 
-    print("this is the start", solve_algorithm(cube_array_python)[0])
-    print("this is the change", solve_algorithm(cube_array_python)[-1])
+    print("this is the start", cube_array_python)
+    print("this is the change", solve_algorithm(cube_array_python))
 
 
 if __name__ == '__main__':

@@ -2,96 +2,98 @@ from Cube_Turning.Cube_Turning_CCW import CubeArrayBCCW, CubeArrayDCCW, CubeArra
 from Cube_Turning.Cube_Turning_CW import CubeArrayBCW, CubeArrayDCW, CubeArrayFCW, CubeArrayLCW, CubeArrayRCW, CubeArrayUCW
 
 edge_map = {
+    ('AE', 'EE'): CubeArrayLCW,
+    ('AE', 'SE'): CubeArrayLCCW,
     ('BE', 'AE'): CubeArrayUCCW,
     ('BE', 'CE'): CubeArrayUCW,
-    ('BE', 'UE'): CubeArrayLCW,
-    ('BE', 'OE'): CubeArrayLCCW,
+    ('BE', 'UE'): CubeArrayBCW,  # was LCW -> BCW
+    ('BE', 'OE'): CubeArrayBCCW,  # was LCCW -> BCCW
     ('CE', 'BE'): CubeArrayUCCW,
     ('CE', 'DE'): CubeArrayUCW,
-    ('CE', 'GE'): CubeArrayBCCW,
-    ('CE', 'QE'): CubeArrayBCW,
+    ('CE', 'GE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('CE', 'QE'): CubeArrayRCW,  # was BCW -> RCW
     ('DE', 'AE'): CubeArrayUCW,
     ('DE', 'CE'): CubeArrayUCCW,
-    ('DE', 'WE'): CubeArrayRCCW,
-    ('DE', 'ME'): CubeArrayRCW,
-    ('EE', 'FE'): CubeArrayRCW,
-    ('EE', 'HE'): CubeArrayRCCW,
-    ('EE', 'AE'): CubeArrayFCCW,
-    ('EE', 'IE'): CubeArrayFCW,
-    ('FE', 'EE'): CubeArrayRCCW,
-    ('FE', 'GE'): CubeArrayRCW,
+    ('DE', 'WE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('DE', 'ME'): CubeArrayFCW,  # was RCW -> FCW
+    ('EE', 'FE'): CubeArrayFCW,  # was RCW -> FCW
+    ('EE', 'HE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('EE', 'AE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('EE', 'IE'): CubeArrayLCW,  # was FCW -> LCW
+    ('FE', 'EE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('FE', 'GE'): CubeArrayFCW,  # was RCW -> FCW
     ('FE', 'NE'): CubeArrayUCCW,
     ('FE', 'VE'): CubeArrayUCW,
-    ('GE', 'FE'): CubeArrayRCCW,
-    ('GE', 'HE'): CubeArrayRCW,
-    ('GE', 'CE'): CubeArrayBCW,
-    ('GE', 'KE'): CubeArrayBCCW,
-    ('HE', 'EE'): CubeArrayRCW,
-    ('HE', 'GE'): CubeArrayRCCW,
+    ('GE', 'FE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('GE', 'HE'): CubeArrayFCW,  # was RCW -> FCW
+    ('GE', 'CE'): CubeArrayRCW,  # was BCW -> RCW
+    ('GE', 'KE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('HE', 'EE'): CubeArrayFCW,  # was RCW -> FCW
+    ('HE', 'GE'): CubeArrayFCCW,  # was RCCW -> FCCW
     ('HE', 'PE'): CubeArrayDCW,
     ('HE', 'XE'): CubeArrayDCCW,
     ('IE', 'JE'): CubeArrayDCW,
     ('IE', 'LE'): CubeArrayDCCW,
-    ('IE', 'EE'): CubeArrayFCCW,
-    ('IE', 'SE'): CubeArrayFCW,
+    ('IE', 'EE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('IE', 'SE'): CubeArrayLCW,  # was FCW -> LCW
     ('JE', 'IE'): CubeArrayDCCW,
     ('JE', 'KE'): CubeArrayDCW,
-    ('JE', 'WE'): CubeArrayRCW,
-    ('JE', 'ME'): CubeArrayRCCW,
+    ('JE', 'WE'): CubeArrayFCW,  # was RCW -> FCW
+    ('JE', 'ME'): CubeArrayFCCW,  # was RCCW -> FCCW
     ('KE', 'JE'): CubeArrayDCCW,
     ('KE', 'LE'): CubeArrayDCW,
-    ('KE', 'GE'): CubeArrayBCW,
-    ('KE', 'QE'): CubeArrayBCCW,
+    ('KE', 'GE'): CubeArrayRCW,  # was BCW -> RCW
+    ('KE', 'QE'): CubeArrayRCCW,  # was BCCW -> RCCW
     ('LE', 'IE'): CubeArrayDCW,
     ('LE', 'KE'): CubeArrayDCCW,
-    ('LE', 'OE'): CubeArrayLCW,
-    ('LE', 'UE'): CubeArrayLCCW,
-    ('ME', 'NE'): CubeArrayBCW,
-    ('ME', 'PE'): CubeArrayBCCW,
-    ('ME', 'DE'): CubeArrayRCCW,
-    ('ME', 'JE'): CubeArrayRCW,
-    ('NE', 'ME'): CubeArrayBCCW,
-    ('NE', 'OE'): CubeArrayBCW,
+    ('LE', 'OE'): CubeArrayBCW,  # was LCW -> BCW
+    ('LE', 'UE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('ME', 'NE'): CubeArrayRCW,  # was BCW -> RCW
+    ('ME', 'PE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('ME', 'DE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('ME', 'JE'): CubeArrayFCW,  # was RCW -> FCW
+    ('NE', 'ME'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('NE', 'OE'): CubeArrayRCW,  # was BCW -> RCW
     ('NE', 'FE'): CubeArrayUCW,
     ('NE', 'RE'): CubeArrayUCCW,
-    ('OE', 'NE'): CubeArrayBCCW,
-    ('OE', 'PE'): CubeArrayBCW,
-    ('OE', 'BE'): CubeArrayLCW,
-    ('OE', 'LE'): CubeArrayLCCW,
-    ('PE', 'OE'): CubeArrayBCCW,
-    ('PE', 'ME'): CubeArrayBCW,
+    ('OE', 'NE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('OE', 'PE'): CubeArrayRCW,  # was BCW -> RCW
+    ('OE', 'BE'): CubeArrayBCW,  # was LCW -> BCW
+    ('OE', 'LE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('PE', 'OE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('PE', 'ME'): CubeArrayRCW,  # was BCW -> RCW
     ('PE', 'HE'): CubeArrayDCCW,
     ('PE', 'TE'): CubeArrayDCW,
-    ('QE', 'RE'): CubeArrayLCW,
-    ('QE', 'TE'): CubeArrayLCCW,
-    ('QE', 'CE'): CubeArrayBCW,
-    ('QE', 'KE'): CubeArrayBCCW,
-    ('RE', 'QE'): CubeArrayLCCW,
-    ('RE', 'SE'): CubeArrayLCW,
+    ('QE', 'RE'): CubeArrayBCW,  # was LCW -> BCW
+    ('QE', 'TE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('QE', 'CE'): CubeArrayRCW,  # was BCW -> RCW
+    ('QE', 'KE'): CubeArrayRCCW,  # was BCCW -> RCCW
+    ('RE', 'QE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('RE', 'SE'): CubeArrayBCW,  # was LCW -> BCW
     ('RE', 'NE'): CubeArrayUCW,
     ('RE', 'VE'): CubeArrayUCCW,
-    ('SE', 'RE'): CubeArrayLCCW,
-    ('SE', 'TE'): CubeArrayLCW,
-    ('SE', 'AE'): CubeArrayFCW,
-    ('SE', 'IE'): CubeArrayFCCW,
-    ('TE', 'QE'): CubeArrayLCW,
-    ('TE', 'SE'): CubeArrayLCCW,
+    ('SE', 'RE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('SE', 'TE'): CubeArrayBCW,  # was LCW -> BCW
+    ('SE', 'AE'): CubeArrayLCW,  # was FCW -> LCW
+    ('SE', 'IE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('TE', 'QE'): CubeArrayBCW,  # was LCW -> BCW
+    ('TE', 'SE'): CubeArrayBCCW,  # was LCCW -> BCCW
     ('TE', 'PE'): CubeArrayDCCW,
     ('TE', 'XE'): CubeArrayDCW,
-    ('UE', 'VE'): CubeArrayFCW,
-    ('UE', 'XE'): CubeArrayFCCW,
-    ('UE', 'BE'): CubeArrayLCCW,
-    ('UE', 'LE'): CubeArrayLCW,
-    ('VE', 'UE'): CubeArrayFCCW,
-    ('VE', 'WE'): CubeArrayFCW,
+    ('UE', 'VE'): CubeArrayLCW,  # was FCW -> LCW
+    ('UE', 'XE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('UE', 'BE'): CubeArrayBCCW,  # was LCCW -> BCCW
+    ('UE', 'LE'): CubeArrayBCW,  # was LCW -> BCW
+    ('VE', 'UE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('VE', 'WE'): CubeArrayLCW,  # was FCW -> LCW
     ('VE', 'FE'): CubeArrayUCCW,
     ('VE', 'RE'): CubeArrayUCW,
-    ('WE', 'VE'): CubeArrayFCCW,
-    ('WE', 'XE'): CubeArrayFCW,
-    ('WE', 'DE'): CubeArrayRCW,
-    ('WE', 'JE'): CubeArrayRCCW,
-    ('XE', 'UE'): CubeArrayFCW,
-    ('XE', 'WE'): CubeArrayFCCW,
+    ('WE', 'VE'): CubeArrayLCCW,  # was FCCW -> LCCW
+    ('WE', 'XE'): CubeArrayLCW,  # was FCW -> LCW
+    ('WE', 'DE'): CubeArrayFCW,  # was RCW -> FCW
+    ('WE', 'JE'): CubeArrayFCCW,  # was RCCW -> FCCW
+    ('XE', 'UE'): CubeArrayLCW,  # was FCW -> LCW
+    ('XE', 'WE'): CubeArrayLCCW,  # was FCCW -> LCCW
     ('XE', 'HE'): CubeArrayDCW,
     ('XE', 'TE'): CubeArrayDCCW,
 }
