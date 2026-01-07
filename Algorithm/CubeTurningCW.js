@@ -1,4 +1,4 @@
-export function CubeArrayRCW(cube) {
+export function CubeArrayFCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],
@@ -43,7 +43,7 @@ export function CubeArrayRCW(cube) {
   return newCube;
 }
 
-export function CubeArrayLCW(cube) {
+export function CubeArrayBCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],
@@ -88,7 +88,7 @@ export function CubeArrayLCW(cube) {
   return newCube;
 }
 
-export function CubeArrayMCW(cube) {
+export function CubeArraySCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],
@@ -100,28 +100,28 @@ export function CubeArrayMCW(cube) {
 
   newCube[0] = [
     [cube[0][0][0], cube[0][0][1], cube[0][0][2]],
-    [cube[4][0][1], cube[4][1][1], cube[4][2][1]],
+    [cube[1][2][1], cube[1][1][1], cube[1][0][1]],
     [cube[0][2][0], cube[0][2][1], cube[0][2][2]],
   ];
 
   newCube[1] = [
-    [cube[1][0][0], cube[0][1][2], cube[1][0][2]],
-    [cube[1][1][0], cube[0][1][1], cube[1][1][2]],
-    [cube[1][2][0], cube[0][1][0], cube[1][2][2]],
+    [cube[1][0][0], cube[2][1][0], cube[1][0][2]],
+    [cube[1][1][0], cube[2][1][1], cube[1][1][2]],
+    [cube[1][2][0], cube[2][1][2], cube[1][2][2]],
   ];
 
   newCube[2] = [
     [cube[2][0][0], cube[2][0][1], cube[2][0][2]],
-    [cube[1][0][1], cube[1][1][1], cube[1][2][1]],
+    [cube[4][2][1], cube[4][1][1], cube[4][0][1]],
     [cube[2][2][0], cube[2][2][1], cube[2][2][2]],
   ];
 
   newCube[3] = cube[3];
 
   newCube[4] = [
-    [cube[4][0][0], cube[2][1][2], cube[4][0][2]],
-    [cube[4][1][0], cube[2][1][1], cube[4][1][2]],
-    [cube[4][2][0], cube[2][1][0], cube[4][2][2]],
+    [cube[4][0][0], cube[0][1][0], cube[4][0][2]],
+    [cube[4][1][0], cube[0][1][1], cube[4][1][2]],
+    [cube[4][2][0], cube[0][1][2], cube[4][2][2]],
   ];
 
   newCube[5] = cube[5];
@@ -129,7 +129,7 @@ export function CubeArrayMCW(cube) {
   return newCube;
 }
 
-export function CubeArrayFCW(cube) {
+export function CubeArrayLCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],
@@ -174,7 +174,7 @@ export function CubeArrayFCW(cube) {
   return newCube;
 }
 
-export function CubeArrayBCW(cube) {
+export function CubeArrayRCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],
@@ -219,7 +219,7 @@ export function CubeArrayBCW(cube) {
   return newCube;
 }
 
-export function CubeArraySCW(cube) {
+export function CubeArrayMCW(cube) {
   let newCube = [
     [[], [], []],
     [[], [], []],

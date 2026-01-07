@@ -1,0 +1,41 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.turn-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.action-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  border: none;
+  padding: 4px 8px;
+  font-size: 16px;
+  background: white;
+  border-radius: 3px;
+  min-width: 30px;
+}
+
+.reset {
+  background: red;
+}
+
+.solve {
+  background: green;
+}
