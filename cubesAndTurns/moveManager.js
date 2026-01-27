@@ -1,8 +1,74 @@
 import { worldAxisX, worldAxisY, worldAxisZ } from "./reuseable/WorldAxis";
+// Import your array-logic functions
+import {
+  CubeArrayLCW,
+  CubeArrayMCW,
+  CubeArrayRCW,
+  CubeArrayFCW,
+  CubeArraySCW,
+  CubeArrayBCW,
+  CubeArrayUCW,
+  CubeArrayECW,
+  CubeArrayDCW,
+} from "../algorithm/cubeTurningCW.js";
+
+import {
+  CubeArrayLCCW,
+  CubeArrayMCCW,
+  CubeArrayRCCW,
+  CubeArrayFCCW,
+  CubeArraySCCW,
+  CubeArrayBCCW,
+  CubeArrayUCCW,
+  CubeArrayECCW,
+  CubeArrayDCCW,
+} from "../algorithm/cubeTurningCCW.js";
+import { cubeArray, setCubeArray } from "../algorithm/rotatingCubeArray"; // Import these
 
 export let movelist = [];
 let isMoving = false;
 
+// Map keys to the logic functions you provided
+const stateMoveMap = {
+  1: CubeArrayLCW,
+  2: CubeArrayMCW,
+  3: CubeArrayRCW,
+  4: CubeArrayFCW,
+  5: CubeArraySCW,
+  6: CubeArrayBCW,
+  7: CubeArrayUCW,
+  8: CubeArrayECW,
+  9: CubeArrayDCW,
+  q: CubeArrayLCCW,
+  w: CubeArrayMCCW,
+  e: CubeArrayRCCW,
+  r: CubeArrayFCCW,
+  t: CubeArraySCCW,
+  y: CubeArrayBCCW,
+  u: CubeArrayUCCW,
+  i: CubeArrayECCW,
+  o: CubeArrayDCCW,
+};
+
+export const queueMove = (key) => {
+  // Removed second param to avoid confusion
+  // 1. Queue animation
+  movelist.push(key);
+
+  // 2. Update the internal array logic immediately
+  if (stateMoveMap[key]) {
+    // Calculate the new state
+    const newState = stateMoveMap[key](cubeArray);
+    // SAVE IT back to the central variable
+    setCubeArray(newState);
+    return newState;
+  }
+  return cubeArray;
+};
+
+export function resetMoveQueue() {
+  movelist.length = 0;
+}
 export const moveDefinitions = {
   // Clockwise rotations
   1: { axis: worldAxisX, angle: Math.PI / 2, filter: (b) => b.xpos <= -6 }, // LCW

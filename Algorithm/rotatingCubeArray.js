@@ -57,6 +57,10 @@ export var cubeArray = [
   ],
 ];
 
+export function setCubeArray(newArray) {
+  cubeArray = newArray;
+}
+
 export function resetCubeArray() {
   cubeArray = [
     [
