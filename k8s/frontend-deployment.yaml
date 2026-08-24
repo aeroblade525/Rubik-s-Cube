@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solver-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solver-frontend
+  template:
+    metadata:
+      labels:
+        app: solver-frontend
+    spec:
+      containers:
+        - name: solver-frontend
+          image: rubiks-frontend:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: solver-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: NodePort
